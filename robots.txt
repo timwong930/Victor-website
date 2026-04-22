@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://victor-website.vercel.app/sitemap.xml

@@ -1,18 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Victor Handyman — Reliable Local Home Repairs</title>
-  <meta name="description" content="A clean, mobile-first website for Victor's handyman business. Built to turn visitors into calls and estimate requests for repairs, installs, drywall, painting, and small home projects." />
+  <meta name="color-scheme" content="dark only" />
+  <title>Victor Handyman | Los Angeles, Inland Empire & Orange County</title>
+  <meta name="description" content="Victor Handyman helps homeowners across Los Angeles, the Inland Empire, and Orange County with concrete, framing, drywall, flooring, and gardening jobs. Call or text Victor for a fast estimate." />
+  <meta name="keywords" content="Victor handyman, handyman Los Angeles, handyman Orange County, handyman Inland Empire, drywall repair, concrete work, framing, flooring, gardening, local contractor" />
   <meta name="theme-color" content="#0f172a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Victor Handyman" />
+  <meta property="og:description" content="Local handyman work across Los Angeles, Inland Empire, and Orange County. Concrete, framing, drywall, flooring, and gardening." />
+  <meta property="og:url" content="https://victor-website.vercel.app/" />
+  <meta property="og:site_name" content="Victor Handyman" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b1220;
-      --bg-2: #101a2e;
+      --bg-2: #111827;
       --surface: rgba(15, 23, 42, 0.78);
       --surface-2: rgba(255, 255, 255, 0.06);
       --text: #f8fafc;
@@ -24,10 +32,10 @@
       --accent-2: #fb923c;
       --accent-3: #38bdf8;
       --success: #34d399;
+      --shadow: 0 24px 80px rgba(2, 6, 23, 0.42);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 18px;
-      --shadow: 0 24px 80px rgba(2, 6, 23, 0.42);
       --max: 1180px;
       --font-display: 'Fraunces', Georgia, serif;
       --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -39,8 +47,8 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 12% 10%, rgba(245, 158, 11, 0.14), transparent 24%),
-        radial-gradient(circle at 84% 0%, rgba(56, 189, 248, 0.14), transparent 26%),
+        radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.14), transparent 24%),
+        radial-gradient(circle at 88% 0%, rgba(56, 189, 248, 0.14), transparent 26%),
         linear-gradient(180deg, #0b1220 0%, #09111d 100%);
       color: var(--text);
       font-family: var(--font-body);
@@ -70,7 +78,6 @@
     .shell::after {
       content: "";
       position: fixed;
-      inset: auto;
       width: 24rem;
       height: 24rem;
       border-radius: 999px;
@@ -94,16 +101,16 @@
       border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
       gap: 1rem;
       padding: 0.9rem 0;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.85rem;
       min-width: 0;
     }
     .brand-mark {
@@ -135,12 +142,14 @@
     .nav-links {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 1rem;
       color: var(--muted);
       font-size: 0.95rem;
+      flex-wrap: wrap;
     }
     .nav-links a:hover { color: #fff; }
-    .nav-cta { display: flex; align-items: center; gap: 0.7rem; }
+    .nav-cta { display: flex; align-items: center; gap: 0.7rem; justify-self: end; }
 
     .btn {
       min-height: 44px;
@@ -173,7 +182,7 @@
     .hero-grid {
       display: grid;
       gap: 1.4rem;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
     }
     .eyebrow {
@@ -193,14 +202,14 @@
     .hero h1 {
       margin: 0;
       font-family: var(--font-display);
-      font-size: clamp(2.6rem, 6vw, 5.1rem);
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
       line-height: 0.96;
       letter-spacing: -0.04em;
       max-width: 11ch;
     }
     .hero p.lead {
       margin: 1rem 0 0;
-      max-width: 34ch;
+      max-width: 38ch;
       color: var(--muted);
       font-size: clamp(1.02rem, 1vw + 0.8rem, 1.18rem);
     }
@@ -266,7 +275,7 @@
       gap: 0.85rem;
     }
     .job-visual {
-      height: 190px;
+      min-height: 190px;
       border-radius: 18px;
       background:
         radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.8), transparent 12%),
@@ -331,7 +340,7 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
     }
-    .section-heading p { margin: 0; color: var(--muted); max-width: 60ch; }
+    .section-heading p { margin: 0; color: var(--muted); max-width: 64ch; }
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -463,10 +472,7 @@
       flex: none;
     }
 
-    form {
-      display: grid;
-      gap: 0.9rem;
-    }
+    form { display: grid; gap: 0.9rem; }
     .field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
     label { display: grid; gap: 0.4rem; font-size: 0.92rem; color: var(--muted); }
     input, textarea, select {
@@ -500,6 +506,24 @@
     }
     .form-error { color: #fda4af; }
 
+    .faq {
+      display: grid;
+      gap: 0.8rem;
+    }
+    details {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin: 0.65rem 0 0; color: var(--muted); }
+
     .footer {
       padding: 2rem 0 3rem;
       border-top: 1px solid var(--line);
@@ -515,27 +539,40 @@
     }
 
     @media (max-width: 960px) {
+      .nav-inner {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { justify-content: flex-start; }
+      .nav-cta { justify-self: start; }
       .hero-grid, .contact-wrap { grid-template-columns: 1fr; }
       .grid-3, .gallery { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
     }
     @media (max-width: 680px) {
+      .nav-links { display: none; }
       .field-grid { grid-template-columns: 1fr; }
-      .nav-cta { gap: 0.5rem; }
+      .nav-cta { gap: 0.5rem; flex-wrap: wrap; }
       .btn-small { padding-inline: 0.9rem; }
       .hero h1 { max-width: 12ch; }
+      .brand-copy strong { white-space: normal; }
+      .brand-copy span { white-space: normal; }
     }
   </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://victor-website.vercel.app/#business",
       "name": "Victor Handyman",
-      "description": "Local handyman services for repairs, installs, drywall, painting, and small home projects.",
-      "areaServed": "Local service area",
-      "url": "https://victor-website.vercel.app/"
+      "description": "Handyman services for concrete, framing, drywall, flooring, and gardening jobs.",
+      "telephone": "+1-213-442-8176",
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Los Angeles"},
+        {"@type": "AdministrativeArea", "name": "Inland Empire"},
+        {"@type": "AdministrativeArea", "name": "Orange County"}
+      ],
+      "serviceType": ["Concrete", "Framing", "Drywall", "Flooring", "Gardening"]
     }
   </script>
 </head>
@@ -548,20 +585,20 @@
           <div class="brand-mark">V</div>
           <div class="brand-copy">
             <strong>Victor Handyman</strong>
-            <span>Reliable local home repairs</span>
+            <span>Construction-focused local help</span>
           </div>
         </a>
 
         <nav class="nav-links" aria-label="Primary">
           <a href="#services">Services</a>
-          <a href="#work">Recent work</a>
-          <a href="#process">Process</a>
+          <a href="#photos">Photos</a>
+          <a href="#service-area">Service area</a>
           <a href="#contact">Contact</a>
         </nav>
 
         <div class="nav-cta">
-          <a class="btn btn-secondary btn-small" href="#contact">Get estimate</a>
-          <a class="btn btn-primary btn-small" href="#contact">Book Victor</a>
+          <a class="btn btn-secondary btn-small" href="tel:+12134428176">Call Victor</a>
+          <a class="btn btn-primary btn-small" href="#contact">Get estimate</a>
         </div>
       </div>
     </header>
@@ -570,58 +607,58 @@
       <section class="hero" id="top">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow">🏠 Built for busy homeowners</div>
-            <h1>Home fixes without the runaround.</h1>
+            <div class="eyebrow">🏗️ 5 years of hands-on work</div>
+            <h1>Concrete, framing, drywall, flooring, and garden work.</h1>
             <p class="lead">
-              Victor helps local homeowners with the little jobs that keep getting pushed off —
-              repairs, installs, drywall patching, painting, furniture assembly, and all the stuff
-              a normal week never seems to make time for.
+              Victor helps homeowners and property owners across Los Angeles, the Inland Empire,
+              and Orange County with the construction jobs that need to get done cleanly and quickly.
             </p>
 
             <div class="cta-row">
-              <a class="btn btn-primary" href="#contact">Request a free estimate</a>
-              <a class="btn btn-secondary" href="#services">See services</a>
+              <a class="btn btn-primary" href="tel:+12134428176">Call or text Victor</a>
+              <a class="btn btn-secondary" href="#contact">Request a callback</a>
             </div>
 
             <div class="trust-row" aria-label="Highlights">
-              <span>✓ Small repairs</span>
-              <span>✓ Clean finishes</span>
-              <span>✓ Fast communication</span>
-              <span>✓ Local service</span>
+              <span>✓ On-call availability</span>
+              <span>✓ Local service areas</span>
+              <span>✓ Construction-minded work</span>
+              <span>✓ Fast response for estimates</span>
             </div>
           </div>
 
           <aside class="hero-card" aria-label="Victor handyman summary">
             <div class="hero-card-top">
               <strong>What Victor handles</strong>
-              <span class="badge">Available for estimates</span>
+              <span class="badge">Call / text to book</span>
             </div>
 
             <div class="job-card">
               <div class="job-visual">
                 Replace this with Victor’s best photo
-                <small>Job site, truck, tools, or before-and-after shot</small>
+                <small>Garden work, framing, or concrete looks best here</small>
               </div>
 
               <ul class="job-list">
-                <li>Drywall patches, hole repair, and touch-ups</li>
-                <li>Fixture installs, shelves, TVs, fans, and hardware</li>
-                <li>Interior painting and small refresh projects</li>
-                <li>Doors, trim, caulking, and general home repairs</li>
+                <li>Concrete work and small pours</li>
+                <li>Framing and door framing repairs</li>
+                <li>Drywall repair and patch work</li>
+                <li>Flooring installs and refresh jobs</li>
+                <li>Gardening and exterior cleanup work</li>
               </ul>
 
               <div class="stats">
                 <div class="stat">
-                  <strong>1 call</strong>
-                  <span>to get the estimate process started</span>
+                  <strong>5 years</strong>
+                  <span>of hands-on construction experience</span>
                 </div>
                 <div class="stat">
-                  <strong>Fast</strong>
-                  <span>responses for straightforward jobs</span>
+                  <strong>3 regions</strong>
+                  <span>Los Angeles, Inland Empire, Orange County</span>
                 </div>
                 <div class="stat">
-                  <strong>Local</strong>
-                  <span>focused on nearby homeowners</span>
+                  <strong>On call</strong>
+                  <span>best for direct call/text inquiries</span>
                 </div>
               </div>
             </div>
@@ -633,73 +670,107 @@
         <div class="container">
           <div class="section-heading">
             <div class="eyebrow">Services</div>
-            <h2>The small jobs people need done now.</h2>
+            <h2>Built for the jobs that make a property look and feel finished.</h2>
             <p>
-              Keep it simple: one reliable guy, one clear website, and a short list of services that
-              homeowners actually search for when something needs fixing.
+              Keep the offer focused on the work Victor already does best. That helps with trust,
+              search intent, and conversion.
             </p>
           </div>
 
           <div class="grid-3">
             <article class="card">
-              <h3>Repairs & punch-list work</h3>
-              <p>Good for the odd fixes that keep stacking up around the house.</p>
+              <h3>Concrete</h3>
+              <p>Small concrete jobs, repairs, and finishing work.</p>
               <ul>
-                <li>Door adjustments and hardware swaps</li>
-                <li>Drywall patching and trim fixes</li>
-                <li>Caulking, sealing, and touch-up work</li>
+                <li>Patch and repair work</li>
+                <li>Small pours and improvements</li>
+                <li>Clean finishes for home exteriors</li>
               </ul>
             </article>
 
             <article class="card">
-              <h3>Installs & assembly</h3>
-              <p>When you bought it, but don’t want to spend your whole weekend building it.</p>
+              <h3>Framing + drywall</h3>
+              <p>Construction support for interior repairs and wall work.</p>
               <ul>
-                <li>TV mounts, shelves, mirrors, and curtains</li>
-                <li>Furniture assembly and wall fixtures</li>
-                <li>Light fixture and fan installs</li>
+                <li>Door framing</li>
+                <li>Drywall repair and patching</li>
+                <li>General structural prep work</li>
               </ul>
             </article>
 
             <article class="card">
-              <h3>Paint & refresh jobs</h3>
-              <p>Small updates that make a room feel better right away.</p>
+              <h3>Flooring + gardening</h3>
+              <p>Finish work and outdoor cleanup that helps a place look cared for.</p>
               <ul>
-                <li>Accent walls and room touch-ups</li>
-                <li>Minor prep and patch-before-paint</li>
-                <li>Clean finishes for rental turnovers</li>
+                <li>Flooring installs and updates</li>
+                <li>Garden cleanup and maintenance</li>
+                <li>Exterior improvement projects</li>
               </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="work">
+      <section class="section" id="photos">
         <div class="container">
           <div class="section-heading">
-            <div class="eyebrow">Recent work</div>
-            <h2>This is where Victor’s photos should do the selling.</h2>
+            <div class="eyebrow">Photos</div>
+            <h2>Use the real work photos. They’ll sell better than stock images.</h2>
             <p>
-              Use real job photos here as soon as you have them. Before-and-after shots, tools on site,
-              and clean finished work will help more than a paragraph ever could.
+              Your strongest assets right now are the garden work, door framing, and concrete photos.
+              Those should be front and center.
             </p>
           </div>
 
           <div class="gallery">
             <div class="photo-slot">
               <span class="photo-tag">Photo slot 01</span>
-              <strong>Kitchen hardware, shelves, or fixture install</strong>
-              <span>Replace this with a real job photo once you have one.</span>
+              <strong>Garden work</strong>
+              <span>Add a strong before/after or a clean finished job shot.</span>
             </div>
             <div class="photo-slot">
               <span class="photo-tag">Photo slot 02</span>
-              <strong>Drywall patch, paint touch-up, or repair work</strong>
-              <span>Before/after images help prove clean workmanship.</span>
+              <strong>Door framing</strong>
+              <span>Great for showing construction detail and craftsmanship.</span>
             </div>
             <div class="photo-slot">
               <span class="photo-tag">Photo slot 03</span>
-              <strong>Victor on the job, truck, tools, or finished room</strong>
-              <span>Any real photo beats a stock image for trust.</span>
+              <strong>Concrete work</strong>
+              <span>Concrete visuals give the page a real contractor feel.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="service-area">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">Service area</div>
+            <h2>Victor works across Los Angeles, the Inland Empire, and Orange County.</h2>
+            <p>
+              The site is intentionally written to help with local search. Service area language shows
+              both people and search engines where Victor works.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>Where he can help</h3>
+              <ul>
+                <li>Los Angeles</li>
+                <li>Inland Empire</li>
+                <li>Orange County</li>
+                <li>Nearby surrounding communities when scheduled</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>What makes this page work for local SEO</h3>
+              <ul>
+                <li>Service-area keywords in headings and copy</li>
+                <li>Clear phone CTA above the fold</li>
+                <li>Handyman and construction-specific service terms</li>
+                <li>Structured data for search engines</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -709,10 +780,10 @@
         <div class="container">
           <div class="section-heading">
             <div class="eyebrow">How it works</div>
-            <h2>Make it easy for people to say yes.</h2>
+            <h2>Keep the path to contact short.</h2>
             <p>
-              A handyman site should not feel complicated. The job is to get the homeowner to contact
-              Victor, describe the problem, and move toward a quick quote.
+              The faster people can call or text, the better. This page is built to reduce friction and
+              turn traffic into real inquiries.
             </p>
           </div>
 
@@ -720,37 +791,69 @@
             <div class="steps">
               <div class="step">
                 <div>
-                  <h3>1. Request an estimate</h3>
-                  <p>The visitor sends a short form with the job type, location, and a quick description.</p>
+                  <h3>1. Call or text Victor</h3>
+                  <p>Use the phone button on mobile or desktop to start the conversation instantly.</p>
                 </div>
               </div>
               <div class="step">
                 <div>
-                  <h3>2. Victor reviews the job</h3>
-                  <p>He sees whether it’s a quick fix, a multi-hour job, or something that needs a quote first.</p>
+                  <h3>2. Send the job details</h3>
+                  <p>Use the callback form below if you want to leave your name, number, and project details.</p>
                 </div>
               </div>
               <div class="step">
                 <div>
-                  <h3>3. Book the work</h3>
-                  <p>Close the loop fast: answer quickly, give a fair price, and lock in the appointment.</p>
+                  <h3>3. Get an estimate</h3>
+                  <p>Victor can review the scope and follow up when he is on call.</p>
                 </div>
               </div>
             </div>
 
             <div class="card">
-              <h3>What to highlight on the page</h3>
+              <h3>Positioning notes</h3>
               <p>
-                These are the trust signals that matter most for a local handyman site.
+                This business should feel like a construction-focused, real-world local service — not a
+                generic marketing agency.
               </p>
               <ul>
-                <li>His real name and face</li>
-                <li>Actual photos of jobs he’s done</li>
-                <li>Clear service list and service area</li>
-                <li>Fast response promise</li>
-                <li>Simple quote or call-to-action</li>
+                <li>Keep the tone direct and practical</li>
+                <li>Use real photos and real work examples</li>
+                <li>Repeat the service area for local relevance</li>
+                <li>Make the phone number easy to see and tap</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">FAQ</div>
+            <h2>Helpful questions people search before they call.</h2>
+            <p>
+              These FAQs help with SEO and make the page feel more complete for visitors who are deciding
+              whether to reach out.
+            </p>
+          </div>
+
+          <div class="faq">
+            <details>
+              <summary>What kind of jobs does Victor take?</summary>
+              <p>Victor focuses on concrete, framing, drywall, flooring, and gardening work, plus related small construction jobs.</p>
+            </details>
+            <details>
+              <summary>Where does Victor work?</summary>
+              <p>He serves Los Angeles, the Inland Empire, and Orange County.</p>
+            </details>
+            <details>
+              <summary>How should people contact Victor?</summary>
+              <p>Call or text the phone number at the top of the page, or use the callback form to leave a project request.</p>
+            </details>
+            <details>
+              <summary>Does Victor have reviews yet?</summary>
+              <p>Not yet. Once a few jobs are completed, add a testimonials section and real customer quotes to strengthen trust.</p>
+            </details>
           </div>
         </div>
       </section>
@@ -759,38 +862,37 @@
         <div class="container">
           <div class="section-heading">
             <div class="eyebrow">Contact</div>
-            <h2>Turn the website into a lead machine.</h2>
+            <h2>Make it easy to call or leave a callback request.</h2>
             <p>
-              This form can send leads to Notion through the Vercel function. When you’re ready, plug in
-              Victor’s real contact info and real photos to make it feel like his business — not a template.
+              The page is designed for quick action. If the visitor is ready, they should call or text.
+              If not, they can leave their details and Victor can follow up.
             </p>
           </div>
 
           <div class="contact-wrap">
             <div class="contact-panel">
               <div class="contact-box">
-                <h3>Why this setup works</h3>
-                <p>Simple local service sites win because they answer the three questions fast:</p>
-                <ul class="contact-list" style="margin-top: 0.9rem;">
-                  <li><span class="dot"></span><div><strong>What do you do?</strong><br>Repairs, installs, paint, drywall, and small home jobs.</div></li>
-                  <li><span class="dot"></span><div><strong>Where do you work?</strong><br>Use a clear local service area so people know they’re covered.</div></li>
-                  <li><span class="dot"></span><div><strong>How do I reach you?</strong><br>One form, one phone number, one clear next step.</div></li>
-                </ul>
+                <h3>Direct contact</h3>
+                <p>Victor is on call. Best option: tap to call or text.</p>
+                <div class="cta-row" style="margin-top: 0.9rem;">
+                  <a class="btn btn-primary" href="tel:+12134428176">Call (213) 442-8176</a>
+                  <a class="btn btn-secondary" href="sms:+12134428176">Text Victor</a>
+                </div>
               </div>
 
               <div class="contact-box">
-                <h3>Before you launch</h3>
+                <h3>What to put here later</h3>
                 <ul class="contact-list">
-                  <li><span class="dot"></span><div><strong>Add Victor’s photos.</strong> Real job photos will help convert visitors.</div></li>
-                  <li><span class="dot"></span><div><strong>Add a real phone number.</strong> Put it in the header and footer once you have it.</div></li>
-                  <li><span class="dot"></span><div><strong>Add a service area.</strong> Local trust matters a lot for handyman work.</div></li>
+                  <li><span class="dot"></span><div><strong>Real photos.</strong> Garden, framing, and concrete shots are the best starting points.</div></li>
+                  <li><span class="dot"></span><div><strong>Testimonials.</strong> Add reviews after the first few jobs.</div></li>
+                  <li><span class="dot"></span><div><strong>Domain name.</strong> Replace the TBD domain once you choose it.</div></li>
                 </ul>
               </div>
             </div>
 
             <div class="card">
-              <h3>Request an estimate</h3>
-              <p>Drop a quick message and Victor can follow up.</p>
+              <h3>Leave a callback request</h3>
+              <p>Use this instead of email. It’s cleaner for the current setup.</p>
               <form id="lead-form">
                 <input type="hidden" name="type" value="estimate" />
                 <div class="field-grid">
@@ -805,27 +907,27 @@
                 </div>
                 <div class="field-grid">
                   <label>
-                    Address or neighborhood
-                    <input name="location" type="text" placeholder="Neighborhood or city" />
+                    City / area
+                    <input name="location" type="text" placeholder="Los Angeles, IE, or OC" />
                   </label>
                   <label>
-                    Job type
+                    Service needed
                     <select name="service" required>
                       <option value="">Select a service</option>
-                      <option>Drywall repair</option>
-                      <option>Painting</option>
-                      <option>Furniture assembly</option>
-                      <option>Fixture / TV / shelf install</option>
-                      <option>Door / trim repair</option>
-                      <option>Other small repair</option>
+                      <option>Concrete</option>
+                      <option>Framing</option>
+                      <option>Drywall</option>
+                      <option>Flooring</option>
+                      <option>Gardening</option>
+                      <option>Other construction work</option>
                     </select>
                   </label>
                 </div>
                 <label>
-                  Tell Victor what you need
-                  <textarea name="message" placeholder="Example: I need a drywall patch and a bathroom fan replacement."></textarea>
+                  Project details
+                  <textarea name="message" placeholder="Tell Victor what you need done."></textarea>
                 </label>
-                <p class="form-note">This form sends to the Vercel /api/notion-submit function if the Notion setup is configured.</p>
+                <p class="form-note">This form sends to the Vercel /api/notion-submit function if your Notion setup is configured.</p>
                 <div class="cta-row" style="margin-top: 0;">
                   <button class="btn btn-primary" type="submit">Send request</button>
                   <a class="btn btn-secondary" href="#top">Back to top</a>
@@ -840,8 +942,8 @@
 
     <footer class="footer">
       <div class="container footer-inner">
-        <div>© 2025 Victor Handyman. Built to get more local calls and estimate requests.</div>
-        <div>Replace the placeholder text and add Victor’s real photos before launch.</div>
+        <div>© 2025 Victor Handyman. Local construction help for homes and small projects.</div>
+        <div>Phone: <a href="tel:+12134428176">(213) 442-8176</a></div>
       </div>
     </footer>
   </div>

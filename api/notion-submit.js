@@ -64,19 +64,19 @@ module.exports = async function (req, res) {
     };
 
     if (data.location) {
-      properties['Location'] = {
+      properties.Location = {
         rich_text: [{ text: { content: data.location } }]
       };
     }
 
     if (data.service) {
-      properties['Service'] = {
+      properties.Service = {
         rich_text: [{ text: { content: data.service } }]
       };
     }
 
     if (data.message) {
-      properties['Notes'] = {
+      properties.Notes = {
         rich_text: [{ text: { content: data.message } }]
       };
     }
@@ -89,9 +89,7 @@ module.exports = async function (req, res) {
     res.status(200).json({ success: true, url: response.url });
   } catch (error) {
     console.error('Notion API Error:', error);
-    const message = error?.body
-      ? JSON.parse(error.body)?.message
-      : error?.message;
+    const message = error?.body ? JSON.parse(error.body)?.message : error?.message;
     res.status(500).json({
       error: message || 'Failed to create lead in Notion. Check server logs.'
     });
