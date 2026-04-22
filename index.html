@@ -310,26 +310,24 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .job-card {
-      border: 1px solid var(--line-2);
-      background: rgba(255,255,255,0.03);
-      border-radius: 18px;
-      padding: 1rem;
+    .hero-card-body {
       display: grid;
-      gap: 0.85rem;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 1rem;
+      align-items: start;
     }
     .hero-photo {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      min-height: 220px;
+      min-height: 100%;
       border: 1px solid var(--line-2);
       background: linear-gradient(135deg, rgba(148, 163, 184, 0.24), rgba(15, 23, 42, 0.88));
+      aspect-ratio: 4 / 5;
     }
     .hero-photo img {
       width: 100%;
       height: 100%;
-      min-height: 220px;
       object-fit: cover;
       display: block;
     }
@@ -343,19 +341,24 @@
       background: rgba(5, 7, 11, 0.78);
       border: 1px solid rgba(255,255,255,0.08);
       color: #fff;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      backdrop-filter: blur(10px);
+    }
+    .job-copy-stack {
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
     }
     .job-list {
       list-style: none;
-      display: grid;
-      gap: 0.65rem;
-      margin: 0;
       padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.7rem;
       color: var(--muted);
+      font-size: 0.98rem;
     }
     .job-list li {
       display: flex;
@@ -363,18 +366,15 @@
       align-items: flex-start;
     }
     .job-list li::before {
-      content: "✓";
-      color: #86efac;
-      font-weight: 900;
-      line-height: 1.2;
-      flex: none;
+      content: '•';
+      color: var(--accent);
+      margin-top: -0.03rem;
     }
-
     .stats {
-      margin-top: 1rem;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.3rem;
     }
     .stat {
       padding: 0.95rem;
@@ -614,6 +614,7 @@
       .grid-3, .gallery { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
+      .hero-card-body { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
       .nav-links { display: none; }
@@ -699,32 +700,34 @@
               <span class="badge">Direct response</span>
             </div>
 
-            <div class="job-card">
+            <div class="hero-card-body">
               <div class="hero-photo">
-                <img src="Concrete_1.png" alt="Victor concrete work on a local job site" />
+                <img src="Framing_2.png" alt="Victor framing work on a local job site" />
                 <div class="hero-photo-caption">Real work photo — precise, durable, no-nonsense</div>
               </div>
 
-              <ul class="job-list">
-                <li>Concrete work and small pours</li>
-                <li>Framing and door framing repairs</li>
-                <li>Drywall repair and patch work</li>
-                <li>Flooring installs and refresh jobs</li>
-                <li>Gardening and exterior cleanup work</li>
-              </ul>
+              <div class="job-copy-stack">
+                <ul class="job-list">
+                  <li>Concrete work and small pours</li>
+                  <li>Framing and door framing repairs</li>
+                  <li>Drywall repair and patch work</li>
+                  <li>Flooring installs and refresh jobs</li>
+                  <li>Gardening and exterior cleanup work</li>
+                </ul>
 
-              <div class="stats">
-                <div class="stat">
-                  <strong>5 years</strong>
-                  <span>of hands-on construction experience</span>
-                </div>
-                <div class="stat">
-                  <strong>3 regions</strong>
-                  <span>Los Angeles, Inland Empire, Orange County</span>
-                </div>
-                <div class="stat">
-                  <strong>On call</strong>
-                  <span>best for direct call/text inquiries</span>
+                <div class="stats">
+                  <div class="stat">
+                    <strong>5 years</strong>
+                    <span>of hands-on construction experience</span>
+                  </div>
+                  <div class="stat">
+                    <strong>3 regions</strong>
+                    <span>Los Angeles, Inland Empire, Orange County</span>
+                  </div>
+                  <div class="stat">
+                    <strong>On call</strong>
+                    <span>best for direct call/text inquiries</span>
+                  </div>
                 </div>
               </div>
             </div>
