@@ -23,7 +23,7 @@ Use this file when an AI assistant needs a quick summary of the business and web
 - Concrete work photos
 
 ## Website goal
-The goal of the site is to convert visitors into calls, texts, or callback requests. On mobile, the header should slide fully out of view while scrolling.
+The goal of the site is to convert visitors into calls, texts, or callback requests. On mobile, the header should slide fully out of view while scrolling. The overall look should feel BMW-inspired: dark, precise, premium, and engineered.
 
 ## Messaging style
 - Construction-focused
@@ -31,6 +31,7 @@ The goal of the site is to convert visitors into calls, texts, or callback reque
 - Local
 - Trustworthy
 - No corporate fluff
+- BMW-inspired premium / precision feel
 
 ## SEO targets
 - handyman Los Angeles
