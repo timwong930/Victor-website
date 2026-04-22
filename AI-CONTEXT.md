@@ -23,7 +23,7 @@ Use this file when an AI assistant needs a quick summary of the business and web
 - Concrete work photos
 
 ## Website goal
-The goal of the site is to convert visitors into calls, texts, or callback requests.
+The goal of the site is to convert visitors into calls, texts, or callback requests. The header should stay compact on mobile while scrolling.
 
 ## Messaging style
 - Construction-focused
