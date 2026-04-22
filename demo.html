@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4D Tesseract Simulation</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: #050510; color: #fff; font-family: -apple-system, system-ui, sans-serif; }
+    #hud { position: absolute; top: 20px; left: 24px; pointer-events: none; }
+    #hud h1 { margin: 0; font-size: 26px; font-weight: 300; letter-spacing: 0.1em; color: #bca0cf; }
+    #hud p { margin: 8px 0 0 0; color: #6a6a8c; font-size: 14px; letter-spacing: 0.05em; }
+    #controls { position: absolute; bottom: 30px; left: 24px; background: rgba(10, 10, 20, 0.85); padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px); }
+    .control-row { display: flex; align-items: center; margin-bottom: 8px; }
+    .control-row:last-child { margin-bottom: 0; }
+    .control-row label { width: 130px; font-size: 12px; text-transform: uppercase; color: #a4a4c4; letter-spacing: 0.08em; }
+    .control-row input { flex: 1; accent-color: #9d7dc3; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div id="hud">
+    <h1 id="hud-title">Initializing...</h1>
+    <p id="hud-desc">Stand by</p>
+  </div>
+  <div id="controls"></div>
+  <script>
+    const particleCount = 20000;
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera.position.z = 25;
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    document.body.appendChild(renderer.domElement);
+    
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    // Additive blending for electric plasma effect
+    const material = new THREE.PointsMaterial({ 
+      size: 0.15, 
+      vertexColors: true, 
+      blending: THREE.AdditiveBlending, 
+      transparent: true,
+      depthWrite: false
+    });
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    const controlsState = {};
+    function addControl(id, label, min, max, initialValue) {
+      if (controlsState[id] === undefined) {
+        controlsState[id] = initialValue;
+        const ctr = document.getElementById('controls');
+        const row = document.createElement('div');
+        row.className = 'control-row';
+        row.innerHTML = `<label for="${id}">${label}</label><input type="range" id="${id}" min="${min}" max="${max}" step="0.01" value="${initialValue}">`;
+        ctr.appendChild(row);
+        document.getElementById(id).addEventListener('input', (e) => {
+          controlsState[id] = parseFloat(e.target.value);
+        });
+      }
+      return controlsState[id];
+    }
+    
+    function setInfo(title, desc) {
+      document.getElementById('hud-title').innerText = title;
+      document.getElementById('hud-desc').innerText = desc;
+    }
+    
+    function annotate(id, pos, labelText) { } 
+
+    // Reusable API constraints
+    const target = new THREE.Vector3();
+    const color = new THREE.Color();
+    
+    function updateParticles(t) {
+      const posAttr = geometry.attributes.position;
+      const colAttr = geometry.attributes.color;
+      const count = particleCount;
+      const time = t;
+      
+      for(let i=0; i<count; i++) {
+        // --- START SHADER BODY ---
+        const scale = addControl("scale", "Scale", 5, 40, 16);
+        const speed = addControl("speed", "Rotation Speed", 0.1, 2.0, 0.4);
+        const d_offset = addControl("depth", "4D Distance", 1.2, 5.0, 2.2);
+        
+        // Distribute points pseudo-randomly over a sphere
+        // using golden ratio for uniform distribution
+        const t_phi = Math.acos(1 - 2 * ((i + 0.5) / count));
+        const t_theta = Math.PI * (1 + Math.sqrt(5)) * i;
+        const t_psi = Math.PI * 2 * (i / count);
+
+        // Starting on a 4D hypersphere surface
+        let x4 = Math.sin(t_phi) * Math.cos(t_theta);
+        let y4 = Math.sin(t_phi) * Math.sin(t_theta);
+        let z4 = Math.cos(t_phi);
+        let w4 = Math.cos(t_psi);
+
+        // Deform hypersphere towards a hypercube (tesseract)
+        // using exponentiation on coordinates
+        const pow = 5.0; // Higher = sharper corners
+        x4 = Math.sign(x4) * Math.pow(Math.abs(x4), 1.0/pow);
+        y4 = Math.sign(y4) * Math.pow(Math.abs(y4), 1.0/pow);
+        z4 = Math.sign(z4) * Math.pow(Math.abs(z4), 1.0/pow);
+        w4 = Math.sign(w4) * Math.pow(Math.abs(w4), 1.0/pow);
+
+        // Apply 4D Rotations over time
+        const rot = time * speed;
+        const cxw = Math.cos(rot), sxw = Math.sin(rot);
+        const czw = Math.cos(rot * 0.618), szw = Math.sin(rot * 0.618);
+        const cyz = Math.cos(rot * 0.382), syz = Math.sin(rot * 0.382);
+
+        // Plane XW rotation
+        let x_ = x4 * cxw - w4 * sxw;
+        let w_ = x4 * sxw + w4 * cxw;
+        x4 = x_; w4 = w_;
+
+        // Plane ZW rotation
+        let z__ = z4 * czw - w4 * szw;
+        let w__ = z4 * szw + w4 * czw;
+        z4 = z__; w4 = w__;
+        
+        // Plane YZ rotation
+        let y_ = y4 * cyz - z4 * syz;
+        let z_ = y4 * syz + z4 * cyz;
+        y4 = y_; z4 = z_;
+
+        // Stereographic Projection from 4D to 3D
+        // Breathing effect modulates the 4D distance to the projection point
+        const breath = d_offset + Math.sin(time) * 0.3;
+        const proj = 1.0 / (breath - w4);
+
+        target.set(
+          x4 * proj * scale,
+          y4 * proj * scale,
+          z4 * proj * scale
+        );
+
+        // Dynamic coloring based on 4D depth (w_) and position
+        const hue = (0.7 + w4 * 0.2 + i * 0.00001 - time * 0.05); // Wraps safely
+        const sat = 0.85;
+        // Dimmer the further along the W axis, creates depth perception
+        const lum = 0.15 + Math.max(0, proj * 0.3);
+
+        color.setHSL(hue - Math.floor(hue), sat, lum);
+
+        if (i === 0) setInfo("Hyper-dimensional Tesseract", "4D particle construct projected into 3D, breathing in spacetime.");
+        // --- END SHADER BODY ---
+        
+        posAttr.setXYZ(i, target.x, target.y, target.z);
+        colAttr.setXYZ(i, color.r, color.g, color.b);
+      }
+      
+      posAttr.needsUpdate = true;
+      colAttr.needsUpdate = true;
+      
+      particles.rotation.y = time * 0.1;
+      particles.rotation.x = Math.sin(time * 0.2) * 0.1;
+    }
+    
+    function animate(now) {
+      updateParticles(now * 0.001);
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate(0);
+    
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
