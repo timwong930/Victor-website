@@ -3,1136 +3,886 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roast & Reach — Coffee Shop Marketing</title>
-  <meta name="description" content="Mobile-first landing page for a digital marketing studio helping small coffee shops keep their website, listings, and local presence fresh." />
-  <meta name="theme-color" content="#0a0503" />
+  <title>Victor Handyman — Reliable Local Home Repairs</title>
+  <meta name="description" content="A clean, mobile-first website for Victor's handyman business. Built to turn visitors into calls and estimate requests for repairs, installs, drywall, painting, and small home projects." />
+  <meta name="theme-color" content="#0f172a" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
-      --text-base: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.45rem);
-      --text-xl: clamp(1.7rem, 1.25rem + 1.8vw, 2.7rem);
-      --text-2xl: clamp(2.4rem, 1.6rem + 3.2vw, 4.2rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
-      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
-      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
-      --color-bg: #fdfaf6;
-      --color-surface: rgba(255, 255, 255, 0.92);
-      --color-surface-soft: rgba(250, 246, 239, 0.9);
-      --color-surface-pill: rgba(245, 241, 232, 0.88);
-      --color-border: rgba(60, 40, 20, 0.1);
-      --color-border-soft: rgba(60, 40, 20, 0.05);
-      --color-divider: rgba(60, 40, 20, 0.08);
-      --color-text: #050301;
-      --color-text-muted: #3a2a20;
-      --color-text-faint: #5a4a40;
-      --color-primary: #e07f43;
-      --color-primary-soft: rgba(224, 127, 67, 0.15);
-      --color-primary-strong: #c25f23;
-      --color-accent: #4fb08a;
-      --color-danger: #ff6767;
-      --color-success: #7ed4aa;
-      --shadow-soft: 0 26px 80px rgba(60, 40, 20, 0.06);
-      --shadow-pill: 0 16px 38px rgba(60, 40, 20, 0.08);
-      --radius-pill: 999px;
-      --radius-lg: 1.6rem;
-      --radius-card: 1.8rem;
+    :root {
+      --bg: #0b1220;
+      --bg-2: #101a2e;
+      --surface: rgba(15, 23, 42, 0.78);
+      --surface-2: rgba(255, 255, 255, 0.06);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --faint: #94a3b8;
+      --line: rgba(148, 163, 184, 0.18);
+      --line-2: rgba(148, 163, 184, 0.12);
+      --accent: #f59e0b;
+      --accent-2: #fb923c;
+      --accent-3: #38bdf8;
+      --success: #34d399;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --shadow: 0 24px 80px rgba(2, 6, 23, 0.42);
+      --max: 1180px;
       --font-display: 'Fraunces', Georgia, serif;
       --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      --content-max: 1160px;
     }
 
-    [data-theme="dark"] {
-      /* Already dark by default, keep same tokens so toggle just inverts overlays if needed later */
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { overflow-x: hidden; width: 100%; margin: 0; }
-    html { scroll-behavior: smooth; text-size-adjust: none; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(245, 158, 11, 0.14), transparent 24%),
+        radial-gradient(circle at 84% 0%, rgba(56, 189, 248, 0.14), transparent 26%),
+        linear-gradient(180deg, #0b1220 0%, #09111d 100%);
+      color: var(--text);
       font-family: var(--font-body);
-      font-size: var(--text-base);
       line-height: 1.6;
-      color: var(--color-text); font-weight: 500;
-      background: radial-gradient(circle at 10% 0%, #faecd7 0, transparent 40%),
-                  radial-gradient(circle at 90% 10%, #f6e3cf 0, transparent 45%),
-                  var(--color-bg);
-      }
+      overflow-x: hidden;
+    }
+
     a { color: inherit; text-decoration: none; }
-    img, canvas, svg { display: block; max-width: 100%; }
+    img, svg { display: block; max-width: 100%; }
     button, input, textarea, select { font: inherit; color: inherit; }
-    button { cursor: pointer; border: none; }
+    button { cursor: pointer; }
 
     .skip-link {
-      position: absolute; left: 1rem; top: -3rem; background: #fff; color: #000;
-      padding: 0.75rem 1rem; border-radius: 999px; z-index: 120; border: 1px solid var(--color-border);
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 50;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: #fff;
+      color: #111827;
     }
-    .skip-link:focus-visible { top: 1rem; }
+    .skip-link:focus { top: 1rem; }
 
-    .page-shell { position: relative; isolation: isolate; }
-
-    #three-container {
-      position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;
-      opacity: 0.42;
+    .shell { position: relative; isolation: isolate; }
+    .shell::before,
+    .shell::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 24rem;
+      height: 24rem;
+      border-radius: 999px;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.45;
     }
-    .bg-gradient {
-      position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background:
-        /* Cream reading veil — strong centre, fades to transparent at edges so beans show through */
-        radial-gradient(ellipse 80% 70% at 50% 38%, rgba(253, 250, 246, 0.88) 0%, rgba(253, 250, 246, 0.60) 45%, transparent 72%),
-        radial-gradient(circle at 20% 15%, rgba(235, 175, 120, 0.08), transparent 40%),
-        radial-gradient(circle at 75% 10%, rgba(210, 150, 100, 0.08), transparent 46%),
-        radial-gradient(circle at 20% 85%, rgba(200, 140, 90, 0.12), transparent 52%),
-        radial-gradient(circle at 85% 80%, rgba(220, 190, 160, 0.15), rgba(253, 250, 246, 0.2) 75%);
-    }
+    .shell::before { left: -8rem; top: 12rem; background: rgba(245, 158, 11, 0.18); }
+    .shell::after { right: -6rem; top: 4rem; background: rgba(56, 189, 248, 0.14); }
 
-    .container {
-      width: min(100% - 2.4rem, var(--content-max));
-      margin: 0 auto;
-    }
+    .container { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+    .section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
 
-    header.nav {
-      position: sticky; top: 0; z-index: 30;
-      backdrop-filter: blur(24px) saturate(180%);
-      background: rgba(255, 255, 255, 0.65);
-      border-bottom: 1px solid rgba(60, 40, 20, 0.08);
-      box-shadow: 0 4px 30px rgba(60, 40, 20, 0.05);
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px) saturate(170%);
+      background: rgba(6, 10, 20, 0.72);
+      border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
+      padding: 0.9rem 0;
     }
     .brand {
-      display: inline-flex; align-items: center; gap: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 0;
     }
     .brand-mark {
-      width: 2.6rem; height: 2.6rem; border-radius: 1.1rem;
-      display: grid; place-items: center;
-      background: radial-gradient(circle at 30% 0%, #ffe0b8 0, #f2b274 26%, #502614 70%);
-      box-shadow: 0 14px 40px rgba(60,40,20,0.06);
-      color: #ffffff;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 0.95rem;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #f59e0b, #fb923c);
+      color: #111827;
+      font-weight: 900;
+      box-shadow: 0 16px 36px rgba(245, 158, 11, 0.24);
+      flex: none;
     }
-    .brand-text strong { font-weight: 800; font-size: var(--text-sm); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
-    .brand-text span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); font-weight: 500; }
-
-    .nav-actions { display: flex; align-items: center; gap: 0.6rem; }
-    .pill-btn, .primary-btn, .ghost-btn {
-      min-height: 44px;
-      border-radius: var(--radius-pill);
-      padding: 0.68rem 1.3rem;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: var(--text-sm);
-      gap: 0.4rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    .brand-copy strong {
+      display: block;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.1;
       white-space: nowrap;
     }
-    .pill-btn {
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted); font-weight: 500;
+    .brand-copy span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
     }
-    .primary-btn {
-      background: radial-gradient(circle at 30% 0, var(--color-primary-strong), var(--color-primary));
-      color: #ffffff;
-      border: 1px solid rgba(255, 210, 160, 0.7);
-      box-shadow: var(--shadow-pill);
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { display: flex; align-items: center; gap: 0.7rem; }
+
+    .btn {
+      min-height: 44px;
+      padding: 0.72rem 1.1rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #111827;
+      box-shadow: 0 16px 38px rgba(245, 158, 11, 0.24);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--line);
+      color: #fff;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
+    .btn-small { padding-inline: 1rem; font-size: 0.95rem; }
+
+    .hero { padding: clamp(3.2rem, 7vw, 5rem) 0 2rem; }
+    .hero-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5.1rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+    }
+    .hero p.lead {
+      margin: 1rem 0 0;
+      max-width: 34ch;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1vw + 0.8rem, 1.18rem);
+    }
+    .cta-row {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .trust-row {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-2);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 1.2rem;
+    }
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1rem;
+    }
+    .hero-card-top strong { font-size: 1rem; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      color: #bbf7d0;
+      font-size: 0.86rem;
       font-weight: 700;
     }
-    .ghost-btn {
-      background: rgba(250,246,240,0.8);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted); font-weight: 500;
-    }
-    .primary-btn:hover, .primary-btn:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 64px rgba(224, 127, 67, 0.3);
-      background: radial-gradient(circle at 20% 0, #ffe2b5, var(--color-primary-strong));
-    }
-    .ghost-btn:hover, .ghost-btn:focus-visible, .pill-btn:hover, .pill-btn:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 40px rgba(60,40,20,0.06);
-    }
-    button:focus-visible, a:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 3px;
-    }
-
-    main { padding-bottom: 5rem; }
-
-    .hero {
-      padding: clamp(3.2rem, 6vh, 4rem) 0 clamp(2.2rem, 3vh, 3rem);
+    .job-card {
+      border: 1px solid var(--line-2);
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 1rem;
       display: grid;
-      grid-template-columns: minmax(0, 100%);
-      justify-content: center;
+      gap: 0.85rem;
     }
-    .hero-inner {
+    .job-visual {
+      height: 190px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.8), transparent 12%),
+        radial-gradient(circle at 80% 18%, rgba(56, 189, 248, 0.5), transparent 10%),
+        linear-gradient(135deg, rgba(148, 163, 184, 0.24), rgba(15, 23, 42, 0.88));
+      border: 1px solid var(--line-2);
       display: grid;
-      gap: 1.8rem;
-      justify-items: flex-start;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 700;
     }
-    .hero-tagline {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(242, 178, 116, 0.35);
-      background: radial-gradient(circle at 0 50%, rgba(242, 178, 116, 0.18), rgba(255, 255, 255, 0.95));
-      color: var(--color-text-muted); font-weight: 500;
-      font-size: var(--text-xs);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-    .hero-tagline span:first-child { font-size: 1.1rem; }
-    .hero-heading {
-      max-width: 100%;
-    }
-    .hero-heading h1 {
-      max-width: 18ch;
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      line-height: 1.03;
-      letter-spacing: -0.03em;
-      text-shadow: 0 0 28px rgba(253,250,246,1), 0 0 56px rgba(253,250,246,0.9);
-    }
-    .hero-heading p {
-      margin-top: 0.9rem;
-      color: var(--color-text-muted); font-weight: 500;
-      max-width: 36ch;
-      text-shadow: 0 0 18px rgba(253,250,246,1), 0 0 36px rgba(253,250,246,0.85);
-    }
-
-    .hero-meta {
+    .job-visual small { display: block; margin-top: 0.35rem; color: var(--faint); font-weight: 500; }
+    .job-list {
+      list-style: none;
       display: grid;
-      gap: 1.2rem;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      color: var(--muted);
+    }
+    .job-list li {
+      display: flex;
+      gap: 0.65rem;
       align-items: flex-start;
     }
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
+    .job-list li::before {
+      content: "✓";
+      color: #86efac;
+      font-weight: 900;
+      line-height: 1.2;
+      flex: none;
     }
-    .hero-quick {
-      display: flex;
-      flex-wrap: wrap;
+
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.8rem;
-      font-size: var(--text-xs);
-      color: var(--color-text-faint);
     }
-    .hero-quick span {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      padding: 0.4rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--color-border-soft);
+    .stat {
+      padding: 0.95rem;
+      border-radius: 18px;
+      border: 1px solid var(--line-2);
+      background: rgba(255,255,255,0.04);
     }
+    .stat strong { display: block; font-size: 1.2rem; }
+    .stat span { color: var(--muted); font-size: 0.88rem; }
 
-    .hero-strip {
+    .section-heading {
       display: grid;
-      gap: 0.8rem;
-      margin-top: 1.2rem;
-    }
-    .hero-strip-row {
-      display: flex;
       gap: 0.7rem;
-      flex-wrap: wrap;
-      font-size: var(--text-sm);
+      margin-bottom: 1.4rem;
+      max-width: 44rem;
     }
-    .hero-strip-row strong { color: var(--color-primary-strong); font-family: var(--font-display); }
-    .hero-strip-pills {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .hero-strip-pills span {
-      padding: 0.35rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: rgba(250, 245, 235, 0.9);
-      border: 1px solid var(--color-border-soft);
-      font-size: var(--text-xs);
-      color: var(--color-text-muted); font-weight: 500;
-    }
-
-    .hero-right-col {
-      display: grid;
-      gap: 1rem;
-    }
-    .hero-metrics {
-      margin-top: 1.5rem;
-    }
-    .metric-card, .flow-card {
-      border-radius: var(--radius-card);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-soft);
-      padding: 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-    }
-    .metric-card {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 0.9rem;
-      font-size: var(--text-sm);
-    }
-    .metric {
-      padding: 0.7rem 0.8rem;
-      border-radius: 1rem;
-      background: rgba(250, 245, 235, 0.9);
-      border: 1px solid var(--color-border-soft);
-    }
-    .metric strong { display: block; font-family: var(--font-display); font-size: 1.35rem; }
-    .metric span { color: var(--color-text-muted); font-weight: 500; }
-
-    .flow-card h2 {
-      font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.4rem;
-    }
-    .flow-steps { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: var(--text-xs); }
-    .flow-steps span {
-      padding: 0.35rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: rgba(250, 245, 235, 0.9);
-      border: 1px solid var(--color-border-soft);
-    }
-
-    section {
-      padding: 1.8rem 0 1.3rem;
-    }
-    .section-head {
-      margin-bottom: 1.1rem;
-      display: grid;
-      gap: 0.6rem;
-    }
-    .section-label {
-      font-size: var(--text-xs);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--color-text-muted); font-weight: 500;
-    }
-    .section-head h2 {
+    .section-heading .eyebrow { margin-bottom: 0; width: fit-content; }
+    .section-heading h2 {
+      margin: 0;
       font-family: var(--font-display);
-      font-size: clamp(1.7rem, 1.2rem + 1.3vw, 2.3rem);
-      letter-spacing: -0.02em;
+      font-size: clamp(2rem, 2.7vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
     }
-    .section-head p { color: var(--color-text-muted); font-weight: 500; max-width: 50ch; }
+    .section-heading p { margin: 0; color: var(--muted); max-width: 60ch; }
 
-    .grid-3, .grid-2, .pricing-grid, .faq-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .card, .metric-card, .flow-card, .lead-card, .setup-box {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-    }
-    .card:hover, .metric-card:hover, .flow-card:hover, .lead-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 60px rgba(60, 40, 20, 0.13);
-      border-color: rgba(242, 178, 116, 0.35);
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 
     .card {
-      border-radius: var(--radius-card);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-      padding: 1.1rem 1.15rem;
-      box-shadow: var(--shadow-soft);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem;
+      box-shadow: 0 16px 36px rgba(2, 6, 23, 0.16);
     }
     .card h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
+      margin: 0 0 0.45rem;
+      font-size: 1.12rem;
+      line-height: 1.25;
     }
-    .card p { color: var(--color-text-muted); font-weight: 500; }
-    .card ul { list-style: none; margin-top: 0.7rem; display: grid; gap: 0.5rem; font-size: var(--text-sm); }
-    .card li { display: flex; gap: 0.5rem; }
-    .card li span:first-child { color: var(--color-primary-strong); }
-
-    .pricing-grid .card {
-      position: relative;
-      padding-top: 1.3rem;
-    }
-    .plan-tag {
-      position: absolute; top: 0.9rem; right: 1.05rem;
-      padding: 0.35rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: rgba(250, 245, 235, 0.92);
-      border: 1px solid var(--color-border-soft);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-text-muted); font-weight: 500;
-    }
-    .plan-price { margin-top: 0.2rem; margin-bottom: 0.5rem; }
-    .plan-price strong {
-      font-family: var(--font-display);
-      font-size: 2rem;
-    }
-    .plan-price span { color: var(--color-text-faint); }
-    .plan-featured {
-      border-color: rgba(242, 178, 116, 0.6);
-      background: radial-gradient(circle at 0 0, rgba(242, 178, 116, 0.22), rgba(255, 255, 255, 0.98));
-    }
-
-    .setup-box {
-      margin-top: 1.1rem;
-      border-radius: var(--radius-card);
-      border: 1px dashed rgba(242, 178, 116, 0.6);
-      background: rgba(255, 255, 255, 0.96);
-      padding: 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-    }
-    .setup-box h3 {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 0.4rem;
-    }
-    .setup-box p { color: var(--color-text-muted); font-weight: 500; font-size: var(--text-sm); }
-
-    .faq-grid .card {
-      padding: 0.9rem 1.05rem;
-    }
-    .faq details { width: 100%; }
-    .faq summary {
+    .card p { margin: 0; color: var(--muted); }
+    .card ul {
+      margin: 0.9rem 0 0;
+      padding: 0;
       list-style: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem;
-      font-weight: 600;
-      font-size: var(--text-sm);
+      display: grid;
+      gap: 0.55rem;
+      color: var(--muted);
     }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq details p {
-      margin-top: 0.6rem;
-      color: var(--color-text-muted); font-weight: 500;
-      font-size: var(--text-sm);
+    .card ul li { display: flex; gap: 0.55rem; }
+    .card ul li::before { content: "•"; color: var(--accent); font-weight: 900; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .photo-slot {
+      min-height: 250px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.2), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.16), transparent 20%);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0.45rem;
+    }
+    .photo-slot strong { font-size: 1rem; }
+    .photo-slot span { color: var(--muted); font-size: 0.92rem; }
+    .photo-tag {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.62);
+      border: 1px solid var(--line-2);
+      color: #e2e8f0;
+      font-size: 0.8rem;
     }
 
-    .split-2 {
+    .steps {
+      display: grid;
+      gap: 0.85rem;
+      counter-reset: step;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 0.95rem;
+      align-items: start;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #111827;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 24px rgba(245, 158, 11, 0.18);
+    }
+    .step h3 { margin: 0 0 0.25rem; font-size: 1.06rem; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .contact-panel {
       display: grid;
       gap: 1rem;
     }
+    .contact-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem;
+    }
+    .contact-box h3 { margin: 0 0 0.3rem; }
+    .contact-box p { margin: 0; color: var(--muted); }
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+    .contact-list li { display: flex; gap: 0.7rem; align-items: flex-start; }
+    .contact-list strong { color: #fff; }
+    .contact-list .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+      flex: none;
+    }
 
-    .lead-card {
-      border-radius: var(--radius-card);
-      border: 1px solid var(--color-border);
-      background: rgba(255, 255, 255, 0.96);
-      padding: 1.1rem 1.15rem;
-      box-shadow: var(--shadow-soft);
+    form {
+      display: grid;
+      gap: 0.9rem;
     }
-    .lead-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 0.3rem;
-    }
-    form { display: grid; gap: 0.8rem; margin-top: 0.5rem; }
-    label { font-size: var(--text-sm); font-weight: 600; }
-    input, select, textarea {
+    .field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+    label { display: grid; gap: 0.4rem; font-size: 0.92rem; color: var(--muted); }
+    input, textarea, select {
       width: 100%;
-      min-height: 46px;
-      border-radius: 0.95rem;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-pill);
-      padding: 0.7rem 0.9rem;
-      color: var(--color-text); font-weight: 500;
+      min-height: 48px;
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
-    textarea { min-height: 110px; resize: vertical; }
+    textarea { min-height: 124px; resize: vertical; }
+    input::placeholder, textarea::placeholder { color: #94a3b8; }
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(245, 158, 11, 0.7);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+      background: rgba(255,255,255,0.055);
+    }
+    .form-note {
+      color: var(--faint);
+      font-size: 0.9rem;
+      margin-top: -0.2rem;
+    }
+    .form-feedback {
+      min-height: 1.2rem;
+      font-size: 0.95rem;
+      color: #86efac;
+      margin-top: -0.1rem;
+    }
+    .form-error { color: #fda4af; }
 
-    footer {
-      padding: 2.4rem 0 5.4rem;
-      color: var(--color-text-faint);
-      border-top: 1px solid var(--color-divider);
-      margin-top: 1rem;
+    .footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
     }
     .footer-inner {
       display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      font-size: var(--text-sm);
-    }
-
-    .sticky-cta {
-      position: fixed;
-      inset-inline: 0;
-      bottom: 0.7rem;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 40;
-    }
-    .sticky-cta-inner {
-      pointer-events: auto;
-      width: min(420px, 100% - 1.2rem);
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(255, 200, 150, 0.25);
-      background: #c96b2a;
-      box-shadow: 0 20px 60px rgba(60,40,20,0.28);
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
       gap: 0.75rem;
-      padding: 0.55rem 0.55rem 0.55rem 0.9rem;
-      font-size: var(--text-sm);
-    }
-    .sticky-cta-inner span {
-      flex: 1;
-      color: #fdfaf6; font-weight: 500;
-    }
-    .sticky-cta-inner .primary-btn {
-      background: rgba(255, 255, 255, 0.95);
-      color: #c96b2a;
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: none;
-    }
-    .sticky-cta-inner .primary-btn:hover, .sticky-cta-inner .primary-btn:focus-visible {
-      background: #ffffff;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      transform: translateY(-1px);
+      align-items: center;
     }
 
-    @media (min-width: 780px) {
-      .hero {
-        padding-top: 4.4rem;
-        padding-bottom: 1rem;
-      }
-      .hero-inner {
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-        align-items: flex-start;
-        gap: 3rem;
-      }
-      .hero-right-col {
-        margin-top: 0;
-      }
-      .hero-metrics {
-        grid-template-columns: repeat(4, minmax(0,1fr));
-        margin-top: 2rem;
-      }
-      section {
-        padding: 3.2rem 0 2rem;
-      }
-      .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .grid-2, .faq-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .pricing-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
-      .split-2 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 2rem; }
-      .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+    @media (max-width: 960px) {
+      .hero-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .grid-3, .gallery { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
-
-    @media (max-width: 779px) {
-      .nav-actions .ghost-btn { display: none; }
-      .hero-inner { gap: 1.6rem; }
-      .brand-text span { display: none; }
-      .brand-text strong { font-size: var(--text-xs); }
-    }
-
-    /* Scroll Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      #three-container { display: none; }
-      .bg-gradient { opacity: 1; }
-      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-      .reveal { opacity: 1; transform: none; transition: none; }
+    @media (max-width: 680px) {
+      .field-grid { grid-template-columns: 1fr; }
+      .nav-cta { gap: 0.5rem; }
+      .btn-small { padding-inline: 0.9rem; }
+      .hero h1 { max-width: 12ch; }
     }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Victor Handyman",
+      "description": "Local handyman services for repairs, installs, drywall, painting, and small home projects.",
+      "areaServed": "Local service area",
+      "url": "https://victor-website.vercel.app/"
+    }
+  </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-  <div id="three-container" aria-hidden="true"></div>
-  <div class="bg-gradient" aria-hidden="true"></div>
-
-  <div class="page-shell">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
     <header class="nav">
       <div class="container nav-inner">
-        <a href="#top" class="brand" aria-label="Roast and Reach home">
-          <div class="brand-mark" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 15.5C7 18.5376 9.46243 21 12.5 21C15.5376 21 18 18.5376 18 15.5V9H7V15.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M18 11H19.5C20.8807 11 22 12.1193 22 13.5C22 14.8807 20.8807 16 19.5 16H18" fill="none" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M9 3C9 4.5 10.5 5.1 10.5 6.7C10.5 7.3 10.2 7.9 9.7 8.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M13 2.5C13 4 14.5 4.7 14.5 6.2C14.5 7 14.1 7.6 13.5 8.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="brand-text">
-            <strong>ROAST & REACH</strong>
-            <span>Digital upkeep for small coffee shops</span>
+        <a class="brand" href="#top" aria-label="Victor Handyman home">
+          <div class="brand-mark">V</div>
+          <div class="brand-copy">
+            <strong>Victor Handyman</strong>
+            <span>Reliable local home repairs</span>
           </div>
         </a>
-        <div class="nav-actions">
-          <a href="#pricing" class="ghost-btn">Pricing</a>
-          <a href="#services" class="pill-btn">See how it works</a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#work">Recent work</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn btn-secondary btn-small" href="#contact">Get estimate</a>
+          <a class="btn btn-primary btn-small" href="#contact">Book Victor</a>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero container" id="top">
-        <div class="hero-inner">
+      <section class="hero" id="top">
+        <div class="container hero-grid">
           <div>
-            <div class="hero-tagline"><span>☕</span><span>Built for independent cafés</span></div>
-            <div class="hero-heading">
-              <h1>Your coffee shop shouldn't lose customers to outdated hours and clunky mobile menus.</h1>
-              <p>We quietly fix the digital basics behind your café so more people can find you, trust you, and actually get to your menu in a couple of taps.</p>
+            <div class="eyebrow">🏠 Built for busy homeowners</div>
+            <h1>Home fixes without the runaround.</h1>
+            <p class="lead">
+              Victor helps local homeowners with the little jobs that keep getting pushed off —
+              repairs, installs, drywall patching, painting, furniture assembly, and all the stuff
+              a normal week never seems to make time for.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contact">Request a free estimate</a>
+              <a class="btn btn-secondary" href="#services">See services</a>
             </div>
-            <div class="hero-meta">
-              <div class="hero-cta-row">
-                <a href="#services" class="primary-btn">Explore our services <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="margin-left:0.2rem;"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                <a href="#interest" class="ghost-btn">Join the interest list</a>
-              </div>
-              <div class="hero-quick">
-                <span><span>✓</span><span>Designed for phones first</span></span>
-                <span><span>✓</span><span>Perfect for 1–5 locations</span></span>
-                <span><span>✓</span><span>Clear monthly pricing</span></span>
-              </div>
-            </div>
-            <div class="hero-strip">
-              <div class="hero-strip-row">
-                <span>We behave like your café's digital barista:</span>
-              </div>
-              <div class="hero-strip-pills">
-                <span>Update hours &amp; holiday schedules</span>
-                <span>Keep menus and listings in sync</span>
-                <span>Polish photos and promos seasonally</span>
-                <span>Respond to reviews</span>
-              </div>
+
+            <div class="trust-row" aria-label="Highlights">
+              <span>✓ Small repairs</span>
+              <span>✓ Clean finishes</span>
+              <span>✓ Fast communication</span>
+              <span>✓ Local service</span>
             </div>
           </div>
 
-          <div class="hero-right-col">
-            <div style="border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-soft); height: 340px; max-height: 340px;">
-              <img src="espresso.png" alt="Pouring espresso" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+          <aside class="hero-card" aria-label="Victor handyman summary">
+            <div class="hero-card-top">
+              <strong>What Victor handles</strong>
+              <span class="badge">Available for estimates</span>
             </div>
-            <article class="flow-card">
-              <h2>What we do each month feels simple from your side.</h2>
-              <div class="flow-steps">
-                <span>Fix hours, menu links, and map pins</span>
-                <span>Refresh promos &amp; photos when seasons change</span>
-                <span>Keep Google + Yelp listings tidy</span>
-                <span>Watch reviews and send a short report</span>
+
+            <div class="job-card">
+              <div class="job-visual">
+                Replace this with Victor’s best photo
+                <small>Job site, truck, tools, or before-and-after shot</small>
               </div>
+
+              <ul class="job-list">
+                <li>Drywall patches, hole repair, and touch-ups</li>
+                <li>Fixture installs, shelves, TVs, fans, and hardware</li>
+                <li>Interior painting and small refresh projects</li>
+                <li>Doors, trim, caulking, and general home repairs</li>
+              </ul>
+
+              <div class="stats">
+                <div class="stat">
+                  <strong>1 call</strong>
+                  <span>to get the estimate process started</span>
+                </div>
+                <div class="stat">
+                  <strong>Fast</strong>
+                  <span>responses for straightforward jobs</span>
+                </div>
+                <div class="stat">
+                  <strong>Local</strong>
+                  <span>focused on nearby homeowners</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">Services</div>
+            <h2>The small jobs people need done now.</h2>
+            <p>
+              Keep it simple: one reliable guy, one clear website, and a short list of services that
+              homeowners actually search for when something needs fixing.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <h3>Repairs & punch-list work</h3>
+              <p>Good for the odd fixes that keep stacking up around the house.</p>
+              <ul>
+                <li>Door adjustments and hardware swaps</li>
+                <li>Drywall patching and trim fixes</li>
+                <li>Caulking, sealing, and touch-up work</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Installs & assembly</h3>
+              <p>When you bought it, but don’t want to spend your whole weekend building it.</p>
+              <ul>
+                <li>TV mounts, shelves, mirrors, and curtains</li>
+                <li>Furniture assembly and wall fixtures</li>
+                <li>Light fixture and fan installs</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Paint & refresh jobs</h3>
+              <p>Small updates that make a room feel better right away.</p>
+              <ul>
+                <li>Accent walls and room touch-ups</li>
+                <li>Minor prep and patch-before-paint</li>
+                <li>Clean finishes for rental turnovers</li>
+              </ul>
             </article>
           </div>
         </div>
-        <article class="metric-card hero-metrics">
-          <div class="metric">
-            <strong>24h</strong>
-            <span>Typical turnaround for hours, menu, and listing updates — nothing sits stale.</span>
-          </div>
-          <div class="metric">
-            <strong>3 plans</strong>
-            <span>Starter, Growth, and Premium — made to be scannable on a phone.</span>
-          </div>
-          <div class="metric">
-            <strong>48h</strong>
-            <span>Priority update window on the Premium plan.</span>
-          </div>
-          <div class="metric">
-            <strong>1 focus</strong>
-            <span>Independent cafés only — no bloated agency contracts or enterprise lock-in.</span>
-          </div>
-        </article>
       </section>
 
-      <section class="container" id="services">
-        <div class="section-head">
-          <span class="section-label">Services</span>
-          <h2>The unglamorous digital work that actually protects your coffee shop.</h2>
-          <p>Owners don't need jargon — they need someone to keep their online details accurate, their site usable on a phone, and their presence alive where customers look before they visit.</p>
-        </div>
-        <div class="grid-3">
-          <article class="card">
-            <h3>Core business info upkeep</h3>
-            <p>We keep your most important details clean and synced so customers don't bounce on bad info.</p>
-            <ul>
-              <li><span>•</span><span>Google Business + Yelp claimed, cleaned, and verified</span></li>
-              <li><span>•</span><span>Hours, holiday schedules, and contact info always current</span></li>
-              <li><span>•</span><span>Duplicate or outdated listings cleaned up</span></li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Website &amp; mobile experience</h3>
-            <p>Your site should feel like a short, pleasant stop — especially on a phone, when someone is standing in line.</p>
-            <ul>
-              <li><span>•</span><span>Menus made mobile-friendly (no painful PDFs if we can help it)</span></li>
-              <li><span>•</span><span>Tap-to-call and ordering links wired in</span></li>
-              <li><span>•</span><span>Hero banners and promos kept seasonal</span></li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Reviews, posts &amp; reporting</h3>
-            <p>We keep a light, steady drumbeat of visible activity and simple owner-level reporting.</p>
-            <ul>
-              <li><span>•</span><span>Review responses within your plan's limit</span></li>
-              <li><span>•</span><span>Social posts / Google Posts for basic visibility</span></li>
-              <li><span>•</span><span>Monthly snapshot: traffic, clicks, reviews, visible fixes</span></li>
-            </ul>
-          </article>
-        </div>
-      </section>
+      <section class="section" id="work">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">Recent work</div>
+            <h2>This is where Victor’s photos should do the selling.</h2>
+            <p>
+              Use real job photos here as soon as you have them. Before-and-after shots, tools on site,
+              and clean finished work will help more than a paragraph ever could.
+            </p>
+          </div>
 
-      <section class="container" id="pricing">
-        <div class="section-head">
-          <span class="section-label">Plans</span>
-          <h2>Flexible options. One setup deep clean.</h2>
-          <p>Everything is structured so you can understand the difference between our services at a glance.</p>
-        </div>
-        <div class="pricing-grid">
-          <article class="card">
-            <span class="plan-tag">Starter</span>
-            <p style="margin-top:2.2rem;">For shops that just need the basics fixed and kept current.</p>
-            <ul>
-              <li><span>•</span><span>Google Business + Yelp updated monthly</span></li>
-              <li><span>•</span><span>Core website info check (hours, menu, contact)</span></li>
-              <li><span>•</span><span>Respond to up to 10 reviews / month</span></li>
-            </ul>
-            <div style="margin-top: 1.6rem;">
-              <a href="#contact" class="ghost-btn" style="width: 100%;">Contact us</a>
+          <div class="gallery">
+            <div class="photo-slot">
+              <span class="photo-tag">Photo slot 01</span>
+              <strong>Kitchen hardware, shelves, or fixture install</strong>
+              <span>Replace this with a real job photo once you have one.</span>
             </div>
-          </article>
-          <article class="card plan-featured">
-            <span class="plan-tag">Growth</span>
-            <p style="margin-top:2.2rem;">For shops that want to look sharp and nudge more repeat visits.</p>
-            <ul>
-              <li><span>•</span><span>Everything in Starter</span></li>
-              <li><span>•</span><span>Website updates for menu changes &amp; seasonal promos</span></li>
-              <li><span>•</span><span>5 social / Google Posts per week</span></li>
-              <li><span>•</span><span>Respond to up to 15 reviews / month</span></li>
-              <li><span>•</span><span>Monthly report: traffic, clicks, reviews</span></li>
-            </ul>
-            <div style="margin-top: 1.6rem;">
-              <a href="#contact" class="primary-btn" style="width: 100%;">Contact us</a>
+            <div class="photo-slot">
+              <span class="photo-tag">Photo slot 02</span>
+              <strong>Drywall patch, paint touch-up, or repair work</strong>
+              <span>Before/after images help prove clean workmanship.</span>
             </div>
-          </article>
-          <article class="card">
-            <span class="plan-tag">Premium</span>
-            <p style="margin-top:2.2rem;">For owners who want it done-for-them with faster turnaround.</p>
-            <ul>
-              <li><span>•</span><span>Everything in Starter and Growth</span></li>
-              <li><span>•</span><span>Quarterly on-site photo session</span></li>
-              <li><span>•</span><span>Simple boosted ad campaign setup (ad spend separate)</span></li>
-              <li><span>•</span><span>Priority updates within 48 hours</span></li>
-              <li><span>•</span><span>Unlimited review responses</span></li>
-              <li><span>•</span><span>Expanded reporting with SEO basics</span></li>
-            </ul>
-            <div style="margin-top: 1.6rem;">
-              <a href="#contact" class="ghost-btn" style="width: 100%;">Contact us</a>
+            <div class="photo-slot">
+              <span class="photo-tag">Photo slot 03</span>
+              <strong>Victor on the job, truck, tools, or finished room</strong>
+              <span>Any real photo beats a stock image for trust.</span>
             </div>
-          </article>
-        </div>
-        
-        <div style="border-radius: var(--radius-card); overflow: hidden; margin-bottom: 1rem; box-shadow: var(--shadow-soft); height: 250px; max-height: 250px; margin-top: 3rem;">
-           <img src="latte-art.png" alt="Latte art on cafe table" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
-        </div>
-<div class="setup-box">
-          <h3>The deep clean before upkeep.</h3>
-          <p>All plans begin with a one-time deep clean: claim and verify listings, fix wrong info, upload 10–15 good photos, clean up duplicates, and repair obvious website/mobile issues. After that, your chosen monthly tier begins.</p>
+          </div>
         </div>
       </section>
 
-      <section class="container" id="faq">
-        <div class="section-head">
-          <span class="section-label">FAQ</span>
-          <h2>Questions a coffee shop owner actually asks.</h2>
-          <p>No runaround, no jargon. Here's what café owners ask us most.</p>
-        </div>
-        <div class="faq-grid">
-          <article class="card faq">
-            <details>
-              <summary><span>Why is there a setup fee on top of the monthly price?</span><span>+</span></summary>
-              <p>The setup fee covers the heavy lifting: claiming and cleaning your Google Business and Yelp profiles, verifying info, uploading initial photos, and fixing obvious website/mobile problems before monthly upkeep begins.</p>
-            </details>
-          </article>
-          <article class="card faq">
-            <details>
-              <summary><span>Do you rebuild my site from scratch?</span><span>+</span></summary>
-              <p>Not always. We start by fixing what hurts customers most: outdated hours, broken menus, slow mobile experience, and confusing listings. If a rebuild makes more sense, we'll explain why and when.</p>
-            </details>
-          </article>
-          <article class="card faq">
-            <details>
-              <summary><span>How do you work with multiple locations?</span><span>+</span></summary>
-              <p>Each location has its own hours, menu, photos, and reviews, so we treat each as its own micro-presence with a smaller add-on fee per location.</p>
-            </details>
-          </article>
-          <article class="card faq">
-            <details>
-              <summary><span>What do I actually see each month?</span><span>+</span></summary>
-              <p>You get a short, owner-friendly summary: what changed, how many visits and clicks you got, what reviews came in, and which fixes we made that month.</p>
-            </details>
-          </article>
+      <section class="section" id="process">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">How it works</div>
+            <h2>Make it easy for people to say yes.</h2>
+            <p>
+              A handyman site should not feel complicated. The job is to get the homeowner to contact
+              Victor, describe the problem, and move toward a quick quote.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="steps">
+              <div class="step">
+                <div>
+                  <h3>1. Request an estimate</h3>
+                  <p>The visitor sends a short form with the job type, location, and a quick description.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div>
+                  <h3>2. Victor reviews the job</h3>
+                  <p>He sees whether it’s a quick fix, a multi-hour job, or something that needs a quote first.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div>
+                  <h3>3. Book the work</h3>
+                  <p>Close the loop fast: answer quickly, give a fair price, and lock in the appointment.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>What to highlight on the page</h3>
+              <p>
+                These are the trust signals that matter most for a local handyman site.
+              </p>
+              <ul>
+                <li>His real name and face</li>
+                <li>Actual photos of jobs he’s done</li>
+                <li>Clear service list and service area</li>
+                <li>Fast response promise</li>
+                <li>Simple quote or call-to-action</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="container" id="interest">
-        <div class="section-head">
-          <span class="section-label">Raise a hand</span>
-          <h2>Two ways to start the conversation.</h2>
-          <p>High-intent owners can book an audit right away. Everyone else can quietly join the list and hear from you when you're ready for more shops.</p>
-        </div>
-        <div class="split-2" id="contact">
-          <article class="lead-card">
-            <h3>Book a free 15-minute audit</h3>
-            <p class="muted">A quick, no-pressure call. We'll look at your listings, mobile site, and reviews — then tell you exactly what we'd fix first.</p>
-            <form id="audit-form">
-              <div>
-                <label for="name">Your name</label>
-                <input id="name" name="name" type="text" placeholder="Jamie from Morning Roast" />
-              </div>
-              <div>
-                <label for="shop">Coffee shop name</label>
-                <input id="shop" name="shop" type="text" placeholder="Morning Roast Café" />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="owner@example.com" />
-              </div>
-              <div>
-                <label for="city">City</label>
-                <input id="city" name="city" type="text" placeholder="Santa Ana" />
-              </div>
-              <div>
-                <label for="issue">Biggest digital headache right now</label>
-                <select id="issue" name="issue">
-                  <option>Outdated hours or menu</option>
-                  <option>Slow or clunky mobile website</option>
-                  <option>Listings &amp; reviews are messy</option>
-                  <option>Need a steady marketing partner</option>
-                </select>
-              </div>
-              <button type="submit" class="primary-btn" id="audit-btn">Request my audit</button>
-            </form>
-          </article>
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">Contact</div>
+            <h2>Turn the website into a lead machine.</h2>
+            <p>
+              This form can send leads to Notion through the Vercel function. When you’re ready, plug in
+              Victor’s real contact info and real photos to make it feel like his business — not a template.
+            </p>
+          </div>
 
-          <article class="lead-card">
-            <h3>Join the interest list</h3>
-            <p class="muted">Not ready to jump on a call? Drop your email and we'll follow up when we have capacity for new shops in your area.</p>
-            <form id="interest-form">
-              <div>
-                <label for="interest-email">Email</label>
-                <input id="interest-email" name="email" type="email" placeholder="owner@example.com" />
+          <div class="contact-wrap">
+            <div class="contact-panel">
+              <div class="contact-box">
+                <h3>Why this setup works</h3>
+                <p>Simple local service sites win because they answer the three questions fast:</p>
+                <ul class="contact-list" style="margin-top: 0.9rem;">
+                  <li><span class="dot"></span><div><strong>What do you do?</strong><br>Repairs, installs, paint, drywall, and small home jobs.</div></li>
+                  <li><span class="dot"></span><div><strong>Where do you work?</strong><br>Use a clear local service area so people know they’re covered.</div></li>
+                  <li><span class="dot"></span><div><strong>How do I reach you?</strong><br>One form, one phone number, one clear next step.</div></li>
+                </ul>
               </div>
-              <div>
-                <label for="note">Optional note</label>
-                <textarea id="note" name="note" placeholder="We have 3 locations and our menu PDFs are all different."></textarea>
+
+              <div class="contact-box">
+                <h3>Before you launch</h3>
+                <ul class="contact-list">
+                  <li><span class="dot"></span><div><strong>Add Victor’s photos.</strong> Real job photos will help convert visitors.</div></li>
+                  <li><span class="dot"></span><div><strong>Add a real phone number.</strong> Put it in the header and footer once you have it.</div></li>
+                  <li><span class="dot"></span><div><strong>Add a service area.</strong> Local trust matters a lot for handyman work.</div></li>
+                </ul>
               </div>
-              <button type="submit" class="ghost-btn" id="interest-btn">Join the list</button>
-            </form>
-          </article>
+            </div>
+
+            <div class="card">
+              <h3>Request an estimate</h3>
+              <p>Drop a quick message and Victor can follow up.</p>
+              <form id="lead-form">
+                <input type="hidden" name="type" value="estimate" />
+                <div class="field-grid">
+                  <label>
+                    Name
+                    <input name="name" type="text" placeholder="Your name" required />
+                  </label>
+                  <label>
+                    Phone
+                    <input name="phone" type="tel" placeholder="(555) 123-4567" required />
+                  </label>
+                </div>
+                <div class="field-grid">
+                  <label>
+                    Address or neighborhood
+                    <input name="location" type="text" placeholder="Neighborhood or city" />
+                  </label>
+                  <label>
+                    Job type
+                    <select name="service" required>
+                      <option value="">Select a service</option>
+                      <option>Drywall repair</option>
+                      <option>Painting</option>
+                      <option>Furniture assembly</option>
+                      <option>Fixture / TV / shelf install</option>
+                      <option>Door / trim repair</option>
+                      <option>Other small repair</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  Tell Victor what you need
+                  <textarea name="message" placeholder="Example: I need a drywall patch and a bathroom fan replacement."></textarea>
+                </label>
+                <p class="form-note">This form sends to the Vercel /api/notion-submit function if the Notion setup is configured.</p>
+                <div class="cta-row" style="margin-top: 0;">
+                  <button class="btn btn-primary" type="submit">Send request</button>
+                  <a class="btn btn-secondary" href="#top">Back to top</a>
+                </div>
+                <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
+    <footer class="footer">
       <div class="container footer-inner">
-        <p>© 2025 Roast &amp; Reach. Digital upkeep for independent coffee shops.</p>
-        <p><a href="#contact" style="text-decoration: underline;">Book a free audit</a></p>
+        <div>© 2025 Victor Handyman. Built to get more local calls and estimate requests.</div>
+        <div>Replace the placeholder text and add Victor’s real photos before launch.</div>
       </div>
     </footer>
-
-    <div class="sticky-cta" aria-hidden="false">
-      <div class="sticky-cta-inner">
-        <span>Free 15-minute audit for café owners</span>
-        <a href="#contact" class="primary-btn">Book now</a>
-      </div>
-    </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Reveal Animations Setup
-      const elementsToReveal = document.querySelectorAll('.hero-inner > div, .section-head, .card, .metric-card, .flow-card, .lead-card, .setup-box');
-      
-      elementsToReveal.forEach((el) => {
-        el.classList.add('reveal');
-        const parent = el.parentElement;
-        if (parent && (parent.classList.contains('grid-3') || parent.classList.contains('grid-2') || parent.classList.contains('pricing-grid') || parent.classList.contains('faq-grid') || parent.classList.contains('split-2'))) {
-           const children = Array.from(parent.children);
-           const i = children.indexOf(el);
-           el.style.transitionDelay = `${i * 0.1}s`;
-        }
-      });
+    const form = document.getElementById('lead-form');
+    const feedback = document.getElementById('form-feedback');
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-      elementsToReveal.forEach(el => observer.observe(el));
-    });
-
-    (function () {
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) return;
-
-      const container = document.getElementById('three-container');
-      if (!container || typeof THREE === 'undefined') return;
-
-      // --- Coffee bean vortex ---
-      // Overhead view of a spinning coffee disc made of bean-shaped sprites.
-      // On scroll: outer beans peel off first (like pouring from a cup),
-      // arc upward, then settle into a scattered float. Scroll back → return.
-
-      // ---- Coffee bean sprite texture (canvas-drawn, shared) ----
-      function createBeanTexture() {
-        const sz = 72;
-        const c = document.createElement('canvas');
-        c.width = sz; c.height = sz;
-        const ctx = c.getContext('2d');
-        ctx.clearRect(0, 0, sz, sz);
-        ctx.save();
-        ctx.translate(sz / 2, sz / 2);
-
-        // Main bean body — warm radial gradient, fades to transparent at edge
-        const body = ctx.createRadialGradient(0, -2, 1, 0, 1, 30);
-        body.addColorStop(0.00, 'rgba(255, 245, 220, 1.00)');
-        body.addColorStop(0.40, 'rgba(255, 230, 195, 0.96)');
-        body.addColorStop(0.75, 'rgba(255, 210, 160, 0.55)');
-        body.addColorStop(1.00, 'rgba(255, 195, 130, 0.00)');
-        ctx.beginPath();
-        ctx.ellipse(0, 0, 30, 16, 0, 0, Math.PI * 2);
-        ctx.fillStyle = body;
-        ctx.fill();
-
-        // Highlight — subtle top-left shine for 3-D feel
-        const hl = ctx.createRadialGradient(-9, -6, 1, -7, -5, 15);
-        hl.addColorStop(0.00, 'rgba(255, 255, 248, 0.40)');
-        hl.addColorStop(1.00, 'rgba(255, 255, 248, 0.00)');
-        ctx.beginPath();
-        ctx.ellipse(0, 0, 30, 16, 0, 0, Math.PI * 2);
-        ctx.fillStyle = hl;
-        ctx.fill();
-
-        // Crease — the signature coffee-bean line through the centre
-        ctx.beginPath();
-        ctx.moveTo(-26, 0);
-        ctx.bezierCurveTo(-11, -3, 11, 3, 26, 0);
-        ctx.strokeStyle = 'rgba(55, 22, 5, 0.70)';
-        ctx.lineWidth = 2.4;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-
-        ctx.restore();
-        return new THREE.CanvasTexture(c);
-      }
-
-      const count = 2600;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 20, 10);
-      camera.lookAt(0, 0, 0);
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.appendChild(renderer.domElement);
-
-      const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(count * 3);
-      const colors    = new Float32Array(count * 3);
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.setAttribute('color',    new THREE.BufferAttribute(colors,    3));
-
-      const beanTex = createBeanTexture();
-      const material = new THREE.PointsMaterial({
-        size: 1.05,
-        map: beanTex,
-        vertexColors: true,
-        blending: THREE.NormalBlending,
-        transparent: true,
-        opacity: 0.92,
-        alphaTest: 0.01,
-        depthWrite: false,
-        sizeAttenuation: true
-      });
-      scene.add(new THREE.Points(geometry, material));
-
-      const MAX_R = 15.0;
-      const MIN_R = 0.6;
-
-      const pRadius  = new Float32Array(count); // base orbit radius
-      const pAngle0  = new Float32Array(count); // initial angle
-      const pOmega   = new Float32Array(count); // angular velocity (rad/s)
-      const pYBase   = new Float32Array(count); // thin-disc height offset
-      const pNoise   = new Float32Array(count); // per-particle random seed
-      const pWobbleA = new Float32Array(count); // radial wobble amplitude
-      const pWobbleF = new Float32Array(count); // radial wobble harmonic
-      const pArcH    = new Float32Array(count); // upward arc height during scatter
-      const pScatterX = new Float32Array(count); // scatter destination X
-      const pScatterY = new Float32Array(count); // scatter destination Y
-      const pScatterZ = new Float32Array(count); // scatter destination Z
-
-      // Background colour (#fdfaf6) for edge-fade blending
-      const BG_R = 0xfd / 255, BG_G = 0xfa / 255, BG_B = 0xf6 / 255;
-
-      for (let i = 0; i < count; i++) {
-        const u = Math.random();
-        const r = MIN_R + Math.pow(u, 0.62) * (MAX_R - MIN_R);
-        pRadius[i]  = r;
-        pAngle0[i]  = Math.random() * Math.PI * 2;
-        // Keplerian differential rotation: inner ~4× faster than outer
-        pOmega[i]   = 0.19 / Math.sqrt(r + 0.25);
-        pYBase[i]   = (Math.random() - 0.5) * 0.55;
-        pNoise[i]   = Math.random();
-        pWobbleA[i] = 0.18 + Math.random() * 0.42;
-        pWobbleF[i] = 2.2 + Math.random() * 3.2;
-        pArcH[i]    = 1.8 + Math.random() * 4.0;
-
-        // Scatter: beans fly outward loosely following their tangential direction
-        const sa = pAngle0[i] + (Math.random() - 0.5) * 1.4;
-        const sd = 9 + Math.random() * 18;
-        pScatterX[i] = Math.cos(sa) * sd;
-        pScatterY[i] = -4 + Math.random() * 16;
-        pScatterZ[i] = Math.sin(sa) * sd;
-      }
-
-      const color = new THREE.Color();
-      let scrollFactor = 0, targetScroll = 0;
-      window.addEventListener('scroll', () => {
-        targetScroll = Math.min(1.0, window.scrollY / 2200);
-      }, { passive: true });
-
-      function updateParticles(t) {
-        scrollFactor += (targetScroll - scrollFactor) * 0.035;
-        const spinMult = 1.0 + scrollFactor * 1.3;
-
-        const posAttr = geometry.attributes.position;
-        const colAttr = geometry.attributes.color;
-
-        for (let i = 0; i < count; i++) {
-          const r    = pRadius[i];
-          const norm = (r - MIN_R) / (MAX_R - MIN_R); // 0 = centre, 1 = outer edge
-
-          // Vortex position (angle grows with time)
-          const angle = pAngle0[i] + pOmega[i] * t * spinMult;
-          const wobble = Math.sin(angle * pWobbleF[i] + t * 0.55 + pNoise[i] * 6.28) * pWobbleA[i];
-          const rr = r + wobble;
-          const vx = Math.cos(angle) * rr;
-          const vy = pYBase[i] + Math.sin(t * 0.22 + pNoise[i] * 5.1) * 0.07;
-          const vz = Math.sin(angle) * rr;
-
-          // Staggered scatter: OUTER beans leave first (like pouring from a tilting cup).
-          // Each bean's scatter begins when scrollFactor crosses its personal threshold.
-          const threshold = (1.0 - norm) * 0.38; // outer=0.0, inner=0.38
-          const beanExpl = Math.max(0, Math.min(1, (scrollFactor - threshold) / 0.62));
-          const ease = beanExpl * beanExpl * (3 - 2 * beanExpl); // smooth-step
-
-          // Parabolic arc: peaks at midpoint of the transition
-          const arc = ease * (1 - ease) * 4 * pArcH[i];
-
-          const x = vx + (pScatterX[i] - vx) * ease;
-          const y = vy + (pScatterY[i] - vy) * ease + arc;
-          const z = vz + (pScatterZ[i] - vz) * ease;
-
-          // ---- Vertex colour: espresso → crema → cream ----
-          // Vertex colour × texture colour → final bean colour (texture is warm-white)
-          let h, s, l;
-          if (norm < 0.48) {
-            const k = norm / 0.48;
-            // Dark espresso → rich amber (expanded to cover outer visible area)
-            h = 0.052 + k * 0.012; s = 0.76; l = 0.20 + k * 0.14;
-          } else if (norm < 0.80) {
-            const k = (norm - 0.48) / 0.32;
-            // Golden crema band
-            h = 0.064 + k * 0.010; s = 0.78 - k * 0.20; l = 0.34 + k * 0.22;
-          } else {
-            const k = (norm - 0.80) / 0.20;
-            // Narrow cream edge fade
-            h = 0.074 + k * 0.010; s = 0.58 - k * 0.44; l = 0.56 + k * 0.30;
-          }
-          color.setHSL(h, s, l);
-
-          // Fade outer rim into page background (seamless edge)
-          // Reduce fade when scattered so beans look solid against the page
-          const edgeMix = Math.max(0, (norm - 0.84) / 0.16) * (1 - ease * 0.8);
-          const cr = color.r + (BG_R - color.r) * edgeMix;
-          const cg = color.g + (BG_G - color.g) * edgeMix;
-          const cb = color.b + (BG_B - color.b) * edgeMix;
-
-          colAttr.setXYZ(i, cr, cg, cb);
-          posAttr.setXYZ(i, x, y, z);
-        }
-
-        posAttr.needsUpdate = true;
-        colAttr.needsUpdate = true;
-      }
-
-      function animate(now) {
-        updateParticles(now * 0.001);
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-      requestAnimationFrame(animate);
-
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    })();
-
-    // Notion Form Submit Handlers
-    async function handleFormSubmit(event, formType) {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const form = event.target;
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerText;
+      feedback.textContent = 'Sending...';
+      feedback.classList.remove('form-error');
 
-      btn.innerText = "Sending...";
-      btn.disabled = true;
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      data.type = formType; // tell backend if it's 'audit' or 'interest'
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const prevLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
 
       try {
+        const payload = Object.fromEntries(new FormData(form).entries());
         const response = await fetch('/api/notion-submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         });
 
-        if (response.ok) {
-          form.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--color-success); font-weight: 600;">Success! We received your information.</div>';
-        } else {
-          const body = await response.json().catch(() => ({}));
-          btn.innerText = originalText;
-          btn.disabled = false;
-          const errEl = form.querySelector('.form-error') || document.createElement('p');
-          errEl.className = 'form-error';
-          errEl.style.cssText = 'color:var(--color-danger);font-size:var(--text-sm);margin-top:0.5rem;';
-          errEl.textContent = body.error || 'Something went wrong. Try again.';
-          if (!form.querySelector('.form-error')) form.appendChild(errEl);
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(result.error || 'Something went wrong');
         }
-      } catch (err) {
-        console.error(err);
-        btn.innerText = originalText;
-        btn.disabled = false;
-        const errEl = form.querySelector('.form-error') || document.createElement('p');
-        errEl.className = 'form-error';
-        errEl.style.cssText = 'color:var(--color-danger);font-size:var(--text-sm);margin-top:0.5rem;';
-        errEl.textContent = 'Network error — check your connection and try again.';
-        if (!form.querySelector('.form-error')) form.appendChild(errEl);
+
+        form.reset();
+        feedback.textContent = 'Thanks — Victor got your request. He can follow up soon.';
+      } catch (error) {
+        feedback.textContent = error.message || 'Could not send request.';
+        feedback.classList.add('form-error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = prevLabel;
       }
-    }
-
-    const auditForm = document.getElementById('audit-form');
-    if (auditForm) auditForm.addEventListener('submit', (e) => handleFormSubmit(e, 'audit'));
-    
-    const interestForm = document.getElementById('interest-form');
-    if (interestForm) interestForm.addEventListener('submit', (e) => handleFormSubmit(e, 'interest'));
-
+    });
   </script>
 </body>
 </html>
