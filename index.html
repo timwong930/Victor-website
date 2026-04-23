@@ -313,18 +313,27 @@
     .hero-card-body {
       display: grid;
       gap: 1rem;
+      min-width: 0;
+      width: 100%;
+    }
+    .hero-card-body > * {
+      min-width: 0;
     }
     .hero-photo {
       position: relative;
+      width: 100%;
+      max-width: 100%;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--line-2);
       background: linear-gradient(135deg, rgba(148, 163, 184, 0.24), rgba(15, 23, 42, 0.88));
       aspect-ratio: 16 / 9;
       min-height: 260px;
+      box-sizing: border-box;
     }
     .hero-photo img {
       width: 100%;
+      max-width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
@@ -343,11 +352,14 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      box-sizing: border-box;
     }
     .job-copy-stack {
       display: grid;
       gap: 0.9rem;
       align-content: start;
+      min-width: 0;
+      width: 100%;
     }
     .job-list {
       list-style: none;
@@ -613,6 +625,8 @@
       .grid-2 { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
       .hero-card-body { grid-template-columns: 1fr; }
+      .hero-card { padding: 1rem; }
+      .hero-card-top { flex-wrap: wrap; }
     }
     @media (max-width: 680px) {
       .nav-links { display: none; }
