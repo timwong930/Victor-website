@@ -312,18 +312,16 @@
     }
     .hero-card-body {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
       gap: 1rem;
-      align-items: start;
     }
     .hero-photo {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      min-height: 100%;
       border: 1px solid var(--line-2);
       background: linear-gradient(135deg, rgba(148, 163, 184, 0.24), rgba(15, 23, 42, 0.88));
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 16 / 9;
+      min-height: 260px;
     }
     .hero-photo img {
       width: 100%;
@@ -912,16 +910,16 @@
             </div>
 
             <div class="card">
-              <h3>Positioning notes</h3>
+              <h3>How Victor gives the fastest estimate</h3>
               <p>
-                This business should feel like a construction-focused, real-world local service — not a
-                generic marketing agency.
+                Keep the request simple: what needs to be done, where it is, and when you want it handled.
+                That helps Victor reply faster and quote the job more clearly.
               </p>
               <ul>
-                <li>Keep the tone direct and practical</li>
-                <li>Use real photos and real work examples</li>
-                <li>Repeat the service area for local relevance</li>
-                <li>Make the phone number easy to see and tap</li>
+                <li>Tell him the city or neighborhood</li>
+                <li>Share the job type and rough size</li>
+                <li>Include a photo if you can</li>
+                <li>Say whether it is a quick fix or a bigger project</li>
               </ul>
             </div>
           </div>
@@ -953,8 +951,8 @@
               <p>Call or text the phone number at the top of the page, or use the callback form to leave a project request.</p>
             </details>
             <details>
-              <summary>Does Victor have reviews yet?</summary>
-              <p>Not yet. Once a few jobs are completed, add a testimonials section and real customer quotes to strengthen trust.</p>
+              <summary>Can Victor handle small repairs?</summary>
+              <p>Yes. Small repairs, quick fixes, and trim-out type jobs are a good fit as long as the request is clear about the scope.</p>
             </details>
           </div>
         </div>
@@ -983,11 +981,12 @@
               </div>
 
               <div class="contact-box">
-                <h3>What to put here later</h3>
+                <h3>What helps Victor quote it right</h3>
                 <ul class="contact-list">
-                  <li><span class="dot"></span><div><strong>Real photos.</strong> Garden, framing, and concrete shots are the best starting points.</div></li>
-                  <li><span class="dot"></span><div><strong>Testimonials.</strong> Add reviews after the first few jobs.</div></li>
-                  <li><span class="dot"></span><div><strong>Domain name.</strong> Replace the TBD domain once you choose it.</div></li>
+                  <li><span class="dot"></span><div><strong>The location.</strong> City or neighborhood helps him understand the trip and service area.</div></li>
+                  <li><span class="dot"></span><div><strong>The job type.</strong> Concrete, framing, drywall, flooring, or garden work all get a faster answer when named clearly.</div></li>
+                  <li><span class="dot"></span><div><strong>A quick photo.</strong> A picture usually makes the estimate cleaner and faster.</div></li>
+                  <li><span class="dot"></span><div><strong>Your timing.</strong> Tell him whether the job is urgent or flexible.</div></li>
                 </ul>
               </div>
             </div>
@@ -1029,7 +1028,7 @@
                   Project details
                   <textarea name="message" placeholder="Tell Victor what you need done."></textarea>
                 </label>
-                <p class="form-note">This form sends to the Vercel /api/notion-submit function if your Notion setup is configured.</p>
+                <p class="form-note">This request goes to Victor’s callback intake so he can follow up by phone or text.</p>
                 <div class="cta-row" style="margin-top: 0;">
                   <button class="btn btn-primary" type="submit">Send request</button>
                   <a class="btn btn-secondary" href="#top">Back to top</a>
